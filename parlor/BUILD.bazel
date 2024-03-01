@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load(
+    "@bazel_gazelle//:def.bzl",
+    "gazelle",
+)
+
+# gazelle:prefix github.com/tnarg/pizza/parlor
+gazelle(
+    name = "gazelle",
+)
+
+go_library(
+    name = "parlor",
+    srcs = ["parlor.go"],
+    importpath = "github.com/tnarg/pizza/parlor",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_alecthomas_repr//:repr"],
+)
